@@ -25,7 +25,7 @@ class ApiController extends Controller
 
         if (Auth::attempt($credentials)) {
             $token = $request->user()->createToken($request->user()->name);
-            return ['success'=>true, 'token' => $token->plainTextToken];
+            return ["user"=>$request->user(), 'success'=>true, 'token' => $token->plainTextToken];
         }
 
         return ["message" => "The provided credentials do not match our records.",
