@@ -26,7 +26,14 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
+        'phone',
+        'sex',
+        'address',
+        'town',
+        'country',
+        'status'
     ];
 
     /**
@@ -61,5 +68,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    function center()  {
+        return hasMany(Center::class);
+    }
+
+    function sos()  {
+        return hasMany(Center::class);
     }
 }
