@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Center;
 use App\Models\sos;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
