@@ -25,7 +25,7 @@ class ApiController extends Controller
 
         if (Auth::attempt($credentials)) {
             $token = $request->user()->createToken($request->user()->name);
-            return ["user"=>$request->user(), 'success'=>true, 'token' => $token->plainTextToken];
+            return ['success'=>true, 'token' => $token->plainTextToken, "user"=>$request->user()];
         }
 
         return ["message" => "The provided credentials do not match our records.",
@@ -41,20 +41,34 @@ class ApiController extends Controller
     //user register
     function register(Request $request) {
         // validate request
-        $request->validate([
-            'name' => 'required',
+        // $request->validate([
+        //     'name' => 'required|string',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => 'required|string'
+        // ]);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|string',
         ]);
+
+        if ($validator->fails()) {
+            return withErrors($validator);
+        }
+
+        // Retrieve the validated input...
+        $validated = $validator->validated();
+
+        // Retrieve a portion of the validated input...
+        $validated = $validator->safe()->only(['name', 'email']);
 
         // create user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'role' => "user",
-            // 'phone' => $request->phone,
             'password' => bcrypt($request->password),
-            // 'address' => $request->address,
             'status' => "active",
         ]);
 
@@ -76,10 +90,8 @@ class ApiController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'role' => 'required|string',
             'phone' => 'required|string',
             'address' => 'required|string',
-            'status' => 'required|string',
         ]);
 
         $user = User::where('id', $item)->first();
@@ -88,11 +100,9 @@ class ApiController extends Controller
         $res = $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => $request->role,
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'address' => $request->address,
-            'status' => $request->status,
         ]);
 
         if($res){
