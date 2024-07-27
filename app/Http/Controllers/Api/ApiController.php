@@ -56,7 +56,7 @@ class ApiController extends Controller
 
         if ($validator->fails()) {
             return [
-                'message' => $validator->errors()[0],
+                'message' => $validator->errors()->first(),
                 'errors' => $validator->errors()
             ];
         }
