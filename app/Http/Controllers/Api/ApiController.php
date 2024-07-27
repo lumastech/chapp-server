@@ -55,7 +55,10 @@ class ApiController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors();
+            return [
+                'message' => $validator->errors()[0],
+                'errors' => $validator->errors()
+            ];
         }
 
         // Retrieve the validated input...
