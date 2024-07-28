@@ -9,6 +9,7 @@ use App\Models\Center;
 use App\Models\sos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class ApiController extends Controller
 {
@@ -293,5 +294,11 @@ class ApiController extends Controller
         }else{
             return ["succes"=>false, "error"=>"somthing went wrong"];
         }
+    }
+
+    function sendSos() {
+        $sos = sos::where('user_id', \auth()->user()->id)->orderBy('id', 'desc')->first();
+
+        // Mail::to($request->user())->send(new OrderShipped($order));
     }
 }
