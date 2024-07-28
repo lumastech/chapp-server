@@ -94,14 +94,6 @@ class ApiController extends Controller
     //user update
     function userUpdate(Request $request) {
         // validate request
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'phone' => 'required|string',
-            'address' => 'required|string',
-        ]);
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'gender' => 'required|string',
