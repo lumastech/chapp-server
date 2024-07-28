@@ -123,7 +123,7 @@ class ApiController extends Controller
         if($res){
             return[
                 "success"=>true,
-                "user"=>$res
+                "user"=>auth()->user()
             ];
         }else{
             return ["succes"=>false, "error"=>"somthing went wrong"];
