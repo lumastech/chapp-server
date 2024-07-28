@@ -121,7 +121,10 @@ class ApiController extends Controller
         ]);
 
         if($res){
-            return $user;
+            return[
+                "success"=>true,
+                "user"=>$res
+            ];
         }else{
             return ["succes"=>false, "error"=>"somthing went wrong"];
         }
