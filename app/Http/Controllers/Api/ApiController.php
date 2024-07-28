@@ -14,7 +14,11 @@ class ApiController extends Controller
 {
     // authenticated user
     function user()  {
-        return auth()->user();
+        return ["user"=>auth()->user()];
+    }
+
+    function authVerify() {
+        return ["success" => true];
     }
 
     // generate api token
