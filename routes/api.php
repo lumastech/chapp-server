@@ -10,6 +10,7 @@ Route::get('/user', function (Request $request) {
 
 // Route::resource('user', UserController::class)->middleware('auth:sanctum');
 Route::get("/profile", [ApiController::class, "user"])->middleware('auth:sanctum');
+Route::get("/profile/update", [ApiController::class, "userUpdate"])->middleware('auth:sanctum');
 Route::get("/token/verify", [ApiController::class, "tokenVerify"])->middleware('auth:sanctum');
 Route::get("/logout", [ApiController::class, "tokenDelete"])->middleware('auth:sanctum');
 Route::post("/token/create", [ApiController::class, "token"]);
