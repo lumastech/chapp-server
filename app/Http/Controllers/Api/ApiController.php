@@ -251,38 +251,7 @@ class ApiController extends Controller
             ];
     }
 
-    // update sos
-    function sosUpdate(Request $request, $sos) {
-        // validate request
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required',
-            'message' => 'required|string',
-        ]);
-
-        $sos = sos::were('id', $sos)->first();
-
-        // create user
-        $sos->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'message' => $request->message,
-        ]);
-
-        if($sos){
-            return [
-                "success"=>true,
-                "message"=> "Information updated successfully",
-                'sos'=>$sos
-            ];
-        }else{
-            return ["succes"=>false, "error"=>"somthing went wrong"];
-        }
-    }
-
-    // store sos
+    // create/update sos
     function sosCreate(Request $request) {
         // validate request
         $request->validate([
@@ -292,15 +261,26 @@ class ApiController extends Controller
             'message' => 'required|string',
         ]);
 
-        // create user
-        $sos = sos::create([
-            'user_id' => $request->user()->id,
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'message' => $request->message,
-            'status' => "active"
-        ]);
+        $sos = sos::where('user_id', \auth()->user()->id)->orderBy('id', 'desc')->first();
+        if($sos){
+            // update sos
+            $sos->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message,
+            ]);
+        }else{
+            // create user
+            $sos = sos::create([
+                'user_id' => $request->user()->id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message,
+                'status' => "active"
+            ]);
+        }
 
         if($sos){
             return [
