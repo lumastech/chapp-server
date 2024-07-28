@@ -53,12 +53,6 @@ class ApiController extends Controller
 
     //user register
     function register(Request $request) {
-        // validate request
-        // $request->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|email|unique:users,email',
-        //     'password' => 'required|string'
-        // ]);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
@@ -73,18 +67,13 @@ class ApiController extends Controller
             ];
         }
 
-        // Retrieve the validated input...
-        $validated = $validator->validated();
-
-        // Retrieve a portion of the validated input...
-        $validated = $validator->safe()->only(['name', 'email']);
-
         // create user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'role' => "user",
             'password' => bcrypt($request->password),
+            'country' => "Zambia",
             'status' => "active",
         ]);
 
@@ -100,7 +89,7 @@ class ApiController extends Controller
     }
 
     //user update
-    function userUpdate(Request $request, $item) {
+    function userUpdate(Request $request) {
         // validate request
         $request->validate([
             'name' => 'required',
@@ -110,14 +99,29 @@ class ApiController extends Controller
             'address' => 'required|string',
         ]);
 
-        $user = User::where('id', $item)->first();
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'gender' => 'required|string',
+            'phone' => 'required|string',
+            'address' => 'required|string',
+            'town' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return [
+                'message' => $validator->errors()->first(),
+                'errors' => $validator->errors()
+            ];
+        }
+
+        $user = $request->user();
 
         // create user
         $res = $user->update([
             'name' => $request->name,
-            'email' => $request->email,
+            'sex' => $request->gender,
             'phone' => $request->phone,
-            'password' => bcrypt($request->password),
+            'town' => $request->town,
             'address' => $request->address,
         ]);
 
