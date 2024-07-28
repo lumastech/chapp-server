@@ -17,8 +17,16 @@ class ApiController extends Controller
         return ["user"=>auth()->user()];
     }
 
-    function authVerify() {
+    function tokenVerify() {
         return ["success" => true];
+    }
+
+    function tokenDelete(Request $request) {
+        $success = false;
+        if($request->user()->currentAccessToken()->delete()){
+            $success = true;
+        }
+        return ["success" => $success];
     }
 
     // generate api token
