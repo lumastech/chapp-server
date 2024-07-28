@@ -211,13 +211,21 @@ class ApiController extends Controller
     // get sos list
     function soss() {
         $soss = sos::where('user_id', \auth()->user()->id)->get();
-        return $soss;
+        return [
+                "sos"=>$soss,
+                "success"=>true,
+                "message"=> "Information deleted successfully"
+            ];
     }
 
     // get last sos
     function sos($id) {
         if($sos = sos::where("id", $id)->where('user_id', \auth()->user()->id)->first()){
-            return $sos;
+            return [
+                "sos"=>$sos,
+                "success"=>true,
+                "message"=> "Information deleted successfully"
+            ];
         }
 
         abort(404, "not fpund");
@@ -226,7 +234,11 @@ class ApiController extends Controller
     // get own sos by id
     function mysos() {
         $sos = sos::where('user_id', \auth()->user()->id)->orderBy('id', 'desc')->first();
-        return $sos;
+        return [
+                "sos"=>$sos,
+                "success"=>true,
+                "message"=> "Information deleted successfully"
+            ];
     }
 
     // delete own sos by id
