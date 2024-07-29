@@ -79,6 +79,6 @@ class User extends Authenticatable
     }
 
     function sos()  {
-        return $this->hasOne(Center::class)->latestOfMany();
+        return $this->hasOne(sos::class)->latestOfMany();
     }
 }
