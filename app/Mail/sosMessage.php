@@ -16,10 +16,19 @@ class sosMessage extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    // public $user;
+      public function __construct()
     {
-        //
+        // $this->user = $user;
     }
+
+    // public function build()
+    // {
+    //     return $this->view('emails.sos')
+    //                 ->with('data', $this->data)
+    //                 ->subject('Subject');
+    // }
+
 
     /**
      * Get the message envelope.
@@ -27,7 +36,7 @@ class sosMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Sos Message',
+            subject: 'Emergence Message',
         );
     }
 
@@ -37,7 +46,7 @@ class sosMessage extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.emails.sos',
+            view: 'emails.sos',
         );
     }
 
