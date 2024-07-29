@@ -16,18 +16,18 @@ class sosMessage extends Mailable
     /**
      * Create a new message instance.
      */
-    // public $user;
-      public function __construct()
+    public $user;
+      public function __construct($user)
     {
-        // $this->user = $user;
+        $this->user = $user;
     }
 
-    // public function build()
-    // {
-    //     return $this->view('emails.sos')
-    //                 ->with('data', $this->data)
-    //                 ->subject('Subject');
-    // }
+    public function build()
+    {
+        return $this->view('emails.sos')
+                    ->with('data', $this->data)
+                    ->subject('Subject');
+    }
 
 
     /**
