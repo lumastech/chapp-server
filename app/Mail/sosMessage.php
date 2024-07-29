@@ -25,7 +25,7 @@ class sosMessage extends Mailable
     public function build()
     {
         return $this->view('emails.sos')
-                    ->with('data', $this->data)
+                    ->with('data', $this->user)
                     ->subject('Subject');
     }
 
