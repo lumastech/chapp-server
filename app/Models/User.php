@@ -75,10 +75,10 @@ class User extends Authenticatable
     }
 
     function center()  {
-        return hasMany(Center::class);
+        return $this->hasMany(Center::class);
     }
 
     function sos()  {
-        return hasOne(Center::class)->latestOfMany();
+        return $this->hasOne(Center::class)->latestOfMany();
     }
 }
