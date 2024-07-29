@@ -138,7 +138,7 @@
             </div>
             <div class="field">
                 <h2>Hi {{$user->sos->name}}</h2>
-                <p>{{ $->user->sos->message }}</p>
+                <p>{{ $user->sos->message }}</p>
             </div>
             <div class="field">
                 <hr style="border-top:1px; margin:24px 0">
