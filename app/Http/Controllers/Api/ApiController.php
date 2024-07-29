@@ -298,7 +298,7 @@ class ApiController extends Controller
 
     function sosSend() {
         // $sos = sos::where('user_id', \auth()->user()->id)->orderBy('id', 'desc')->first();
-        if ($user = User::were('id', \auth()->user()->id)->first()){
+        if ($user = User::where('id', \auth()->user()->id)->first()){
             Mail::to($user->email)->send(new sosMessage($sos));
             return [
                 "success"=>true,
