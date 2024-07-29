@@ -296,9 +296,19 @@ class ApiController extends Controller
         }
     }
 
-    function sendSos() {
-        $sos = sos::where('user_id', \auth()->user()->id)->orderBy('id', 'desc')->first();
+    function sosSend() {
+        // $sos = sos::where('user_id', \auth()->user()->id)->orderBy('id', 'desc')->first();
+        if ($user = User::were('id', \auth()->user()->id)->first()){
+            Mail::to($user->email)->send(new sosMessage($sos));
+            return [
+                "success"=>true,
+                "message"=> "Emergence message sent! Successfully",
+            ];
+        }
 
-        // Mail::to($request->user())->send(new OrderShipped($order));
+        return[
+                "success"=>false,
+                "message"=> "Somthing went wrong!"
+            ];
     }
 }
