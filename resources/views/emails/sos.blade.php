@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Record</title>
+    <title>Emergence message</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,10 +55,10 @@
                 <strong>Name:</strong> {{ $user['name'] }}
             </div>
             <div class="field">
-                <strong>Email:</strong> {{ $$user['email'] }}
+                <strong>Email:</strong> {{ $user['email'] }}
             </div>
             <div class="field">
-                <strong>Phone:</strong> {{ $$user['phone'] }}
+                <strong>Phone:</strong> {{ $user['phone'] }}
             </div>
             <div class="field">
                 <h2>Hi {{$user['sos']['name']}}</h2>
