@@ -10,6 +10,7 @@ use App\Models\sos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\sosMessage;
 
 class ApiController extends Controller
 {
