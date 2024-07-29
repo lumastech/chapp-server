@@ -128,21 +128,21 @@
         </div>
         <div class="content">
             <div class="field">
-                <strong>Name:</strong> {{ $user->name }}
+                <strong>Name:</strong> {{ $user['name'] }}
             </div>
             <div class="field">
-                <strong>Email:</strong> {{ $$user->email }}
+                <strong>Email:</strong> {{ $$user['email'] }}
             </div>
             <div class="field">
-                <strong>Phone:</strong> {{ $$user->phone }}
+                <strong>Phone:</strong> {{ $$user['phone'] }}
             </div>
             <div class="field">
-                <h2>Hi {{$user->sos->name}}</h2>
-                <p>{{ $user->sos->message }}</p>
+                <h2>Hi {{$user['sos']['name']}}</h2>
+                <p>{{ $user['sos']['message'] }}</p>
             </div>
             <div class="field">
                 <hr style="border-top:1px; margin:24px 0">
-                <p class="footer">If you have received this message it means {{ $user->name }} added you as there Emergence contact person in <em> Community Health Helper App</em> </p>
+                <p class="footer">If you have received this message it means {{ $user['name'] }} added you as there Emergence contact person in <em> Community Health Helper App</em> </p>
             </div>
         </div>
         <div class="footer">
