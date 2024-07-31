@@ -17,6 +17,7 @@ class Center extends Model
         'type',
         'description',
         'status',
+        'address',
         'coordinates',
     ];
 

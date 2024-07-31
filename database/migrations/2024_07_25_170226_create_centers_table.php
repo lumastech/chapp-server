@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('type');
-            $table->string('description')->nullable();
+            $table->string('address');
+            $table->text('description')->nullable();
             $table->string('status')->default('active');
             $table->string('coordinates')->nullable();
             $table->string('image')->nullable();

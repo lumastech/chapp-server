@@ -135,13 +135,21 @@ class ApiController extends Controller
     // get centers
     function centers() {
         $centers = Center::all();
-        return $centers;
+        return [
+                "success"=>true,
+                "message"=> "Information Saved Successfully",
+                "center" => $centers
+            ];
     }
 
     // get center by id
     function center($id) {
         $center = Center::where("id", $id)->first();
-        return $center;
+        return[
+                "success"=>true,
+                "message"=> "Information Saved Successfully",
+                "center" => $center
+            ];
     }
 
     // store center
