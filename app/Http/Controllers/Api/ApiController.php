@@ -159,6 +159,7 @@ class ApiController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
+            'address' => 'required',
             'description' => 'required|string',
             'coordinates' => 'required|string',
         ]);
@@ -169,6 +170,7 @@ class ApiController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'address' => $request->address,
             'description' => $request->description,
             'coordinates' => $request->coordinates,
             'type' => "center",
@@ -194,7 +196,8 @@ class ApiController extends Controller
             'email' => 'required|email',
             'phone' => 'required|string',
             'description' => 'required|string',
-            'coordinates' => 'required|string',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
 
         ]);
 

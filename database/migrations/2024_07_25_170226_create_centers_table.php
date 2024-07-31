@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('address');
             $table->text('description')->nullable();
             $table->string('status')->default('active');
-            $table->string('coordinates')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
