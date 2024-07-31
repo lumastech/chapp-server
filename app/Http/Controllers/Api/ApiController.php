@@ -138,7 +138,7 @@ class ApiController extends Controller
         return [
                 "success"=>true,
                 "message"=> "Information Saved Successfully",
-                "center" => $centers
+                "center" => json_encode($centers)
             ];
     }
 
