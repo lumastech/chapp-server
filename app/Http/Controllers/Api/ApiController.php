@@ -161,7 +161,8 @@ class ApiController extends Controller
             'phone' => 'required',
             'address' => 'required',
             'description' => 'required|string',
-            'coordinates' => 'required|string',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
         ]);
 
         // create user
@@ -172,7 +173,8 @@ class ApiController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'description' => $request->description,
-            'coordinates' => $request->coordinates,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
             'type' => "center",
             'status' => "active"
         ]);
@@ -209,7 +211,8 @@ class ApiController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'description' => $request->description,
-            'coordinates' => $request->coordinates,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
         ]);
 
         if($center){
