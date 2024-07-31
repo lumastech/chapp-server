@@ -198,6 +198,7 @@ class ApiController extends Controller
             'email' => 'required|email',
             'phone' => 'required|string',
             'description' => 'required|string',
+            'address' => 'required|string',
             'lat' => 'required|string',
             'lng' => 'required|string',
 
@@ -210,6 +211,7 @@ class ApiController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'address' => $request->address,
             'description' => $request->description,
             'lat' => $request->lat,
             'lng' => $request->lng,
