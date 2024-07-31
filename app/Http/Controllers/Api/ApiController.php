@@ -191,9 +191,10 @@ class ApiController extends Controller
     }
 
     // store center
-    function centerUpdate(Request $request, $id) {
+    function centerUpdate(Request $request) {
         // validate request
         $request->validate([
+            'id' => 'required|string',
             'name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|string',
@@ -204,7 +205,7 @@ class ApiController extends Controller
 
         ]);
 
-        $center = Center::where('id', $id)->first();
+        $center = Center::where('id', $request->id)->first();
 
         // create user
         $center->update([

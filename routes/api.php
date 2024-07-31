@@ -19,7 +19,7 @@ Route::delete("/account/delete", [ApiController::class, "accountDelete"])->middl
 
 Route::post("/center/create", [ApiController::class, "centerCreate"])->middleware('auth:sanctum');
 Route::get("/centers", [ApiController::class, "centers"])->middleware('auth:sanctum');
-Route::post("/center/{id}/update", [ApiController::class, "centerUpdate"])->middleware('auth:sanctum');
+Route::post("/center/update", [ApiController::class, "centerUpdate"])->middleware('auth:sanctum');
 Route::get("/center/{id}", [ApiController::class, "center"])->middleware('auth:sanctum');
 Route::delete("/center/{id}/delete", [ApiController::class, "centerDelete"])->middleware('auth:sanctum');
 
