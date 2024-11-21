@@ -143,7 +143,7 @@ class ApiController extends Controller
     }
 
     // filter centers
-    function propFilter($filter) {
+    function centersfilter($filter) {
         if($filter != "" && $filter != 'all'){
             $centers = Center::where('price', $filter)
             ->orWhere('name', 'LIKE', "%$filter%")
