@@ -10,7 +10,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\FileController;
 
 Route::get('/', function () {
-    return redirect(route('login'));
+    return Inertia::render('Home');
 });
 
 Route::middleware([
@@ -19,6 +19,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Home');
     })->name('dashboard');
 });

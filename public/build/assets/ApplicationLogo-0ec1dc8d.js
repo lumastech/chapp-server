@@ -1,0 +1,1 @@
+import{_ as o}from"./logo-e04a0658.js";import{_ as r}from"./_plugin-vue_export-helper-c27b6911.js";import{o as t,d as c}from"./app-5fc8cc23.js";const e={},s={src:o,alt:"chapp"};function _(n,a){return t(),c("img",s)}const f=r(e,[["render",_]]);export{f as A};
