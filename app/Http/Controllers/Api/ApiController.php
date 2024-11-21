@@ -147,14 +147,10 @@ class ApiController extends Controller
         if($filter != "" && $filter != 'all'){
             $centers = Center::where('price', $filter)
             ->orWhere('name', 'LIKE', "%$filter%")
-            ->orWhere('price', 'LIKE', "%$filter%")
-            ->orWhere('user_id', '=', "%$filter%")
-            ->orWhere('category_id', '=', "%$filter%")
-            ->orWhere('status', 'LIKE', "%$filter%")
-            ->orWhere('city', 'LIKE', "%$filter%")
-            ->orWhere('country', 'LIKE', "%$filter%")
+            ->orWhere('phone', 'LIKE', "%$filter%")
+            // ->orWhere('country', 'LIKE', "%$filter%")
             ->orWhere('address', 'LIKE', "%$filter%")
-            ->orWhere('description', 'LIKE', "%$filter%")
+            ->orWhere('type', 'LIKE', "%$filter%")
             ->with('images')->orderBy('id', "desc")->get();
 
         } else{
