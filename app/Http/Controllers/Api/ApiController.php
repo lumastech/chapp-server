@@ -142,6 +142,32 @@ class ApiController extends Controller
             ];
     }
 
+    // filter centers
+    function propFilter($filter) {
+        if($filter != "" && $filter != 'all'){
+            $centers = Center::where('price', $filter)
+            ->orWhere('name', 'LIKE', "%$filter%")
+            ->orWhere('price', 'LIKE', "%$filter%")
+            ->orWhere('user_id', '=', "%$filter%")
+            ->orWhere('category_id', '=', "%$filter%")
+            ->orWhere('status', 'LIKE', "%$filter%")
+            ->orWhere('city', 'LIKE', "%$filter%")
+            ->orWhere('country', 'LIKE', "%$filter%")
+            ->orWhere('address', 'LIKE', "%$filter%")
+            ->orWhere('description', 'LIKE', "%$filter%")
+            ->with('images')->orderBy('id', "desc")->get();
+
+        } else{
+            $centers = Center::where('status', 'approved')->with(["images", "user", "category"])->orderBy("created_at", "desc")->get();
+        }
+
+        return [
+                "success"=>true,
+                "message"=> "Center list",
+                "centers" => $centers
+            ];
+    }
+
     // get center by id
     function center($id) {
         $center = Center::where("id", $id)->first();
