@@ -18,6 +18,7 @@ Route::post("/register", [ApiController::class, "register"]);
 Route::delete("/account/delete", [ApiController::class, "accountDelete"])->middleware('auth:sanctum');
 
 Route::post("/center/create", [ApiController::class, "centerCreate"])->middleware('auth:sanctum');
+Route::post("/crime/create", [ApiController::class, "crimeCreate"])->middleware('auth:sanctum');
 Route::get("/centers", [ApiController::class, "centers"])->middleware('auth:sanctum');
 Route::get("/centers/search/{filter}", [ApiController::class, "centersfilter"])->middleware('auth:sanctum');
 Route::post("/center/update", [ApiController::class, "centerUpdate"])->middleware('auth:sanctum');

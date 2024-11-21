@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Center;
+use App\Models\Crime;
 use App\Models\sos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -211,7 +212,43 @@ class ApiController extends Controller
         }
     }
 
-    // store center
+
+    // store crime report
+    function crimeCreate(Request $request) {
+        // validate request
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'nullable|string',
+            'area' => 'required',
+            'description' => 'required|string',
+            'lat' => 'nullable|numeric',
+            'lng' => 'nullable|numeric',
+        ]);
+
+        // create crime report
+        $crime = Crime::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'area' => $request->area,
+            'description' => $request->description,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
+            'type' => "crime",
+            'status' => "active"
+        ]);
+
+        if($crime){
+            return [
+                "success"=>true,
+                "message"=> "Information Saved Successfully",
+                "crime" => $crime
+            ];
+        }else{
+            return ["succes"=>false, "error"=>"somthing went wrong"];
+        }
+    }
+
+    // update center
     function centerUpdate(Request $request) {
         // validate request
         $request->validate([
