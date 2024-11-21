@@ -154,7 +154,7 @@ class ApiController extends Controller
             ->with('images')->orderBy('id', "desc")->get();
 
         } else{
-            $centers = Center::where('status', 'approved')->with(["images", "user", "category"])->orderBy("created_at", "desc")->get();
+            $centers = Center::where('status', 'approved')->with(["images", "user"])->orderBy("created_at", "desc")->get();
         }
 
         return [
