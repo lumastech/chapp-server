@@ -19,6 +19,7 @@ class Center extends Model
         'lng',
         'status',
         'address',
+        'description',
         'coordinates',
     ];
 
