@@ -134,7 +134,7 @@ class ApiController extends Controller
 
     // get centers
     function centers() {
-        $centers = Center::orderBy("created_at", "desc")->get();
+        $centers = Center::with('images')->orderBy("created_at", "desc")->get();
         return [
                 "success"=>true,
                 "message"=> "Information Saved Successfully",
