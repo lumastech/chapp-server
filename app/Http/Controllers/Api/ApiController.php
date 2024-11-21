@@ -145,8 +145,7 @@ class ApiController extends Controller
     // filter centers
     function centersfilter($filter) {
         if($filter != "" && $filter != 'all'){
-            $centers = Center::where('price', $filter)
-            ->orWhere('name', 'LIKE', "%$filter%")
+            $centers = Center::where('name', 'LIKE', "%$filter%")
             ->orWhere('phone', 'LIKE', "%$filter%")
             // ->orWhere('country', 'LIKE', "%$filter%")
             ->orWhere('address', 'LIKE', "%$filter%")
